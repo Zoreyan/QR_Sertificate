@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="px-4 pt-5 my-5 mx-auto border-bottom col-4">
+
+    <table class="table">
+      <tr>
+        <th>Ф.И.О</th>
+        <th>ID</th>
+      </tr>
+      <tbody>
+        {% for sertificate in sertificates %}
+        <tr>
+          <td><a href="{% url 'sertificate-detail' sertificate.id %}">{{ sertificate.name }}</a></td>
+          <td><a href="{% url 'sertificate-detail' sertificate.id %}">{{ sertificate.id }}</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

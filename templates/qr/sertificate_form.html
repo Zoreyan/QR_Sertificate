@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="col-md-6 mx-auto mt-5 border">
+    <div class="py-5 px-4 px-sm-5">
+        <form class="py-2" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="poster" class="form-label">Шаблон для сертификата</label>
+                {{ form.settings }}
+            </div>
+
+        <div class="mb-3">
+            <label for="name" class="form-label">Ф.И.О</label>
+            {{ form.name }}
+        </div>
+
+        <p class="text-center mt-4">
+            <button type="submit" class="btn btn-primary">
+            Сохранить
+            </button>
+        </p>
+        </form>
+    </div>
+    </div>
+</div>
+{% endblock %}

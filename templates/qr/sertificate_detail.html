@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+  <div class="container col-xxl-8 px-4 py-5">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+      <div class="col-10 col-sm-8 col-lg-6">
+        {% if sertificate.image %}
+        <img src="{{ sertificate.image.url }}" alt="" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+        {% else %}
+        <img src="{{ sertificate.settings.template.url }}" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+        {% endif %}
+        
+      </div>
+      <div class="col-lg-6">
+        <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">{{ sertificate.name }}</h1>
+        <p class="lead">Идентификатор награждаемого: "{{ sertificate.id }}".</p>
+        <p class="lead">Дата создания: "{{ sertificate.created }}".</p>
+        {% if request.user.is_staff %}
+          <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+            <form action="" method="post" class="mt-3">
+              {% csrf_token %}
+              <div class="" style="display: none;">
+                {{ form }}
+              </div>
+              <button class="btn btn-success" type="submit">Подтвердить</button>
+              {% if sertificate.image and request.user.is_authenticated %}
+              <a href="{{ sertificate.image.url }}" download="true" class="btn btn-info" type="submit">Скачать файл</a>
+              {% endif %}
+          </form>
+          </div>
+          {% else %}
+          <p class="text-success">Ваш сертификат является подлинным</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="col-md-6 mx-auto mt-5 border">
+    <div class="py-5 px-4 px-sm-5">
+        <form class="py-2" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="name" class="form-label">Название</label>
+                {{ form.title }}
+            </div>
+            <div class="mb-3">
+                <label for="poster" class="form-label">Шаблон для сертификата</label>
+                {{ form.template }}
+            </div>
+            <p>Координаты где будет распологаться Ф.И.О награждаемого</p>
+        <div class="mb-3">
+            <label for="name" class="form-label">По координате X</label>
+            {{ form.x }}
+        </div>
+        <div class="mb-3">
+            <label for="name" class="form-label">По координате Y</label>
+            {{ form.y }}
+        </div>
+        <div class="mb-3">
+            <label for="name" class="form-label">Размер шрифта</label>
+            {{ form.font_size }}
+        </div>
+
+        <p class="text-center mt-4">
+            <button type="submit" class="btn btn-primary">
+            Сохранить
+            </button>
+        </p>
+        </form>
+    </div>
+    </div>
+</div>
+{% endblock %}
